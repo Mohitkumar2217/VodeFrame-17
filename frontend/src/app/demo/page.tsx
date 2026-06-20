@@ -161,7 +161,7 @@ function MetricCard({
   highlight = false,
 }: {
   title: string;
-  value: any;
+  value: string | number;
   highlight?: boolean;
 }) {
   return (

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { auth } from "../lib/auth";
 import { motion, AnimatePresence } from "framer-motion";
-import NotificationBell from "../app/notifications/page";
+import NotificationBell from "./NotificationBell";
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -90,7 +90,7 @@ const Navigation = () => {
                   {item.name}
                 </button>
               ))}
-              {isAuthenticated ? <NotificationBell loginUser={auth.getUser()} /> : <></>}
+              {isAuthenticated ? <NotificationBell /> : <></>}
             </nav>
 
             {/* Language Drop-down */}
@@ -148,7 +148,7 @@ const Navigation = () => {
 
           {/* Mobile Menu Toggle */}
           <div className="md:hidden text-gray-300 flex gap-5">
-            <NotificationBell  loginUser={auth.getUser()}/>
+            <NotificationBell/>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
             >

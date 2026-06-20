@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins, Inter, Noto_Sans_Bengali, Noto_Sans_Devanagari } from "next/font/google";
-// @ts-ignore: CSS side-effect import declaration handled by Next.js
+
 import "./globals.css";
 
 const poppins = Poppins({

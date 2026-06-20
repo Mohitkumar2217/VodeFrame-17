@@ -3,6 +3,7 @@
 import { Bell } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
+import { auth } from "../lib/auth";
 
 interface Notification {
   id: number;
@@ -11,23 +12,15 @@ interface Notification {
   createdAt: string;
 }
 
-interface NotificationBellProps {
-  loginUser: {
-    id: number;
-  } | null;
-}
-
-export default function NotificationBell({
-  loginUser,
-}: NotificationBellProps) {
+export default function NotificationBell() {
   const [count, setCount] = useState(0);
   const [open, setOpen] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const hasFetched = useRef(false);
+  const loginUser = auth.getUser();
 
   useEffect(() => {
     if (!loginUser?.id || hasFetched.current) return;
-
     hasFetched.current = true;
 
     const fetchNotifications = async () => {
