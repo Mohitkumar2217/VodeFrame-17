@@ -1,7 +1,7 @@
 import requests
+import os
 
-# Hardcoded key (if you prefer)
-SERPER_API_KEY = "691fcd4f01dcac405a292dac3c6922d89297ea35906da95779192550eff72e48"
+SERPER_API_KEY = os.getenv("SERPER_KEY")
 
 def duckduckgo_search(query, max_results=5):
     url = "https://google.serper.dev/search"

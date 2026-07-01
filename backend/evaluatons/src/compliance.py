@@ -16,8 +16,7 @@ class ComplianceChecker:
       • Returns a compliance score (0–10) for the Policy module
     """
  
-    # 20 MDONER-STYLE GUIDELINE CHECKPOINTS
-    # These are phrased as *institutional expectations*, not strict rules. 
+    # 20 MDONER-STYLE GUIDELINE CHECKPOINTS 
     GUIDELINES: List[str] = [
         # TECHNICAL
         "Clear statement of objectives aligned with regional development priorities",

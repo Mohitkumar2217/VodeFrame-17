@@ -8,7 +8,7 @@ class FaissVectorStore:
 
     def __init__(self, persist_dir, model_name="all-MiniLM-L6-v2"):
         self.persist_dir = persist_dir
-        os.makedirs(self.persist_dir, exist_ok=True)   # <--- IMPORTANT
+        os.makedirs(self.persist_dir, exist_ok=True)  
         self.model = SentenceTransformer(model_name)
         self.index = None
         self.metadata = []
@@ -38,7 +38,7 @@ class FaissVectorStore:
         self.metadata = [{"text": t} for t in texts]
 
     def save(self):
-        os.makedirs(self.persist_dir, exist_ok=True)   # <--- ENSURE DIR EXISTS
+        os.makedirs(self.persist_dir, exist_ok=True)  
 
         faiss_path = os.path.join(self.persist_dir, "faiss.index")
         meta_path = os.path.join(self.persist_dir, "metadata.pkl")

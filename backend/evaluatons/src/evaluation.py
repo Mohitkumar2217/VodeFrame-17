@@ -18,7 +18,7 @@ from src.pdf_annotator import annotate_pdf
 load_dotenv()
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-# GOVERNMENT-LIKE POLICY NORMS (Pseudo-official, qualitative only) 
+# GOVERNMENT-LIKE POLICY NORMS 
 GOVERNMENT_NORMS = {
     "technical": [
         "As per standard practices referenced in Ministry-level screening frameworks for infrastructure and watershed projects.",
@@ -92,7 +92,7 @@ class DPRAssistant:
         self.llm = ChatGroq(
             model=model,
             groq_api_key=os.getenv("GROQ_API_KEY"),
-            max_tokens=1400  # enough room for rich numeric final report
+            max_tokens=1400  
         )
 
         self.agents = MultiAgentSystem(strong_mode=True)

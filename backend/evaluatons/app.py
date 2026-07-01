@@ -77,7 +77,7 @@ def save_evaluation_json(pdf_name: str, evaluation_data: dict):
 
     return filename
 
-# 1. UPLOAD + PROCESS + EVALUATE DPR 
+# UPLOAD + PROCESS + EVALUATE DPR 
 @app.post("/upload_dpr")
 async def upload_dpr(file: UploadFile = File(...)):
     try: 
@@ -122,7 +122,7 @@ async def upload_dpr(file: UploadFile = File(...)):
         traceback.print_exc()
         return JSONResponse(status_code=500, content={"error": str(e)})
 
-# 2. LIST GIS IMAGES 
+# LIST GIS IMAGES 
 @app.get("/gis_images")
 def list_gis_images():
     folder = GIS_DIR
@@ -133,6 +133,7 @@ def list_gis_images():
         return {"error": str(e)}
 
 
+# LIST Risk IMAGES 
 @app.get("/risk_images")
 def list_risk_images():
     folder = RISK_DIR
@@ -143,7 +144,7 @@ def list_risk_images():
         return {"error": str(e)}
 
 
-# 4. RAG QUERY 
+# RAG QUERY 
 class QueryRequest(BaseModel):
     query: str
     top_k: int = 5
@@ -158,7 +159,7 @@ def ask(req: QueryRequest):
         traceback.print_exc()
         return {"error": str(e)}
  
-# 5. SEARCH WEB 
+# SEARCH WEB 
 @app.get("/search_web")
 def search_web(q: str):
     try:
@@ -168,7 +169,7 @@ def search_web(q: str):
         return {"error": str(e)}
 
  
-# 6. REEVALUATE WITHOUT RE-UPLOAD 
+# REEVALUATE WITHOUT RE-UPLOAD 
 @app.post("/evaluate_dpr")
 def reevaluate():
     try:
@@ -193,7 +194,7 @@ def reevaluate():
         traceback.print_exc()
         return {"error": str(e)}
  
-# 7. HEALTH CHECK 
+# HEALTH CHECK 
 @app.get("/health")
 def health():
     return {"status": "running"}

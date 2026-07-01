@@ -175,7 +175,7 @@ def add_legend_and_summary(page, total_issues, per_severity):
         )
         y += 18
 
-    # --- Summary box ---
+    # Summary box
     page.draw_rect(summary_rect, fill=(1, 1, 1, 0.96))
 
     page.insert_text(
@@ -268,12 +268,12 @@ def annotate_pdf(input_path, issues, project_title=None):
 
     total_pages = len(doc)
 
-    # --- Page 1 Banner + Summary ---
+    # Page 1 Banner + Summary
     page0 = doc[0]
     add_header_banner(page0, project_title)
     add_legend_and_summary(page0, total_issues, per_severity)
 
-    # --- Iterate all pages ---
+    # Iterate all pages
     for p in range(total_pages):
         page = doc[p]
         page_issues = issues_by_page.get(p, [])
@@ -292,7 +292,7 @@ def annotate_pdf(input_path, issues, project_title=None):
 
         add_page_footer(page, p, total_pages, count)
 
-    # --- SAVE OUTPUT FILE ---
+    # SAVE OUTPUT FILE
     os.makedirs("annotated", exist_ok=True)
     out_path = f"annotated/DPR_Reviewed_{uuid.uuid4().hex}.pdf"
     doc.save(out_path, deflate=True, clean=True)
